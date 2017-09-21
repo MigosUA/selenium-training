@@ -1,5 +1,6 @@
 package com.migos;
 
+import com.migos.utils.MyActions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,22 +22,19 @@ public class TopRatedPage {
 
     public TopRatedPage(WebDriver driver) {
         this.driver = driver;
-        this.downArrow = downArrow;
-        this.topRatedMovies = topRatedMovies;
         PageFactory.initElements(driver, this);
     }
 
     public void selectMovies() {
-        downArrow.click();
+        MyActions.click(driver, downArrow);
     }
 
     public void setTopRatedMovies() {
-        topRatedMovies.click();
+        MyActions.click(driver, topRatedMovies);
     }
 
     public void printAllTopRatedMovies() {
         WebElement elem1 = allTopRatedMovies.get(0);
-        //System.out.println(elem1.findElement(By.xpath(".//td[@class='titleColumn']//a")).getText());
         System.out.println(allTopRatedMovies.get(0).getText());
         System.out.println(allTopRatedMovies.get(1).getText());
         System.out.println(allTopRatedMovies.get(2).getText());

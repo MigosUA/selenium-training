@@ -1,5 +1,6 @@
 package com.migos;
 
+import com.migos.utils.MyActions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -68,7 +69,7 @@ public class SearchPanel {
     }
 
     public void setSubmitButton() {
-        submitButton.click();
+        MyActions.click(driver, submitButton);
     }
 
     public int findSectionElements() {

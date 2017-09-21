@@ -11,7 +11,6 @@ public class Movies {
         driver.get("http://www.imdb.com/?ref_=nv_home");
         TopRatedPage panel = new TopRatedPage(driver);
         panel.selectMovies();
-        Thread.sleep(1000);
         panel.setTopRatedMovies();
         panel.printAllTopRatedMovies();
     }
