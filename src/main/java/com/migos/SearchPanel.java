@@ -1,6 +1,7 @@
 package com.migos;
 
 import com.migos.utils.MyActions;
+import com.migos.utils.MyWaits;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,11 +14,8 @@ import java.util.stream.Collectors;
 public class SearchPanel {
     private final WebDriver driver;
 
-    @FindBy(id = "navbar-suggestionsearch")
-    private List<WebElement> elementCount;
-
     @FindBy(css = (".poster .title"))
-    private List<WebElement> posterTitle;
+    public List<WebElement> posterTitle;
 
     @FindBy(id = "navbar-query")
     private WebElement searchInput;
@@ -29,19 +27,16 @@ public class SearchPanel {
     private WebElement submitButton;
 
     @FindBy(css = (".findResult"))
-    private List<WebElement> findResult;
+    public List<WebElement> findResult;
 
     public SearchPanel(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public SearchPanel(WebDriver driver, List<WebElement> elementCount, List<WebElement> posterTitle) {
+    public SearchPanel(WebDriver driver, List<WebElement> posterTitle) {
         this.driver = driver;
-        this.elementCount = elementCount;
         this.posterTitle = posterTitle;
-        this.searchInput = searchInput;
-        this.submitButton = submitButton;
     }
 
     public void SetSearch(String search) {
@@ -50,11 +45,6 @@ public class SearchPanel {
 
     private WebElement getSearchInput() {
         return searchInput;
-    }
-
-    public int elementCount() {
-        System.out.println("Number of elements - " + posterTitle.size());
-        return posterTitle.size();
     }
 
     public List<String> getText() {
@@ -72,8 +62,4 @@ public class SearchPanel {
         MyActions.click(driver, submitButton);
     }
 
-    public int findSectionElements() {
-        System.out.println("Number of titles in Search - " + findResult.size());
-        return findResult.size();
-    }
 }
