@@ -1,4 +1,5 @@
 import com.migos.SearchPanel;
+import com.migos.utils.MyWaits;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -12,8 +13,7 @@ public class FindSearchInput {
         driver.get("http://www.imdb.com/?ref_=nv_home");
         SearchPanel page = new SearchPanel(driver);
         page.SetSearch("game of");
-        Thread.sleep(1000);
-        Assert.assertEquals(page.elementCount(), 8, "Size of elements is not 8");
+        Assert.assertEquals(MyWaits.myRendering(driver, page.posterTitle, 8), 8, "Size of elements is not 8");
         for (String text2 : page.getText())
             Assert.assertTrue(text2.toLowerCase().contains("game of"), "Item: " + text2 + " does not contain 'game of'");
     }
@@ -29,6 +29,6 @@ public class FindSearchInput {
         page.selectSearchType("TV Episodes");
         page.SetSearch("game of");
         page.setSubmitButton();
-        Assert.assertEquals(page.findSectionElements(), 200, "Number of titles in search is not 200");
+        Assert.assertEquals(MyWaits.myRendering(driver, page.findResult, 200), 200,"Number of titles in search is not 200");
     }
 }
