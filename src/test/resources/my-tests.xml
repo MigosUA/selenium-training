@@ -1,0 +1,24 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="regression">
+    <test name="test1">
+        <groups>
+            <run>
+                <include name="group1"/>
+            </run>
+        </groups>
+    </test>
+
+    <test name="test2">
+        <packages>
+        <package name="com.migos"/>
+        </packages>
+    </test>
+
+    <test name="test3">
+        <classes>
+        <class name="com.migos.SearchPanel"/>
+        <class name="com.migos.TopRatedPage"/>
+        </classes>
+    </test>
+</suite>

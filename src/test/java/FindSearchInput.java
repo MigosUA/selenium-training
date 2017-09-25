@@ -5,8 +5,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class FindSearchInput {
-    @Test
+public class FindSearchInput extends TestGroupName{
+
+    @Test(groups = {groupName1, GROUP_NAME_4})
     public void showAndCountElements() throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         WebDriver driver = new ChromeDriver();
